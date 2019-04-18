@@ -1,4 +1,5 @@
-$("button").on("click", function() {
+$(document).ready(function(){
+$(document).on("click", ".btn", function() {
   // In this case, the "this" keyword refers to the button that was clicked
   var game = $(this).attr("data-game");
   // Constructing a URL to search Giphy for the name of the game who said the quote
@@ -48,5 +49,11 @@ $("button").on("click", function() {
     });
 });
 
+$("#add-game").on("click", function(){
+  var input = $("#game-input").val().trim();
+  var btntxt = $('<button class= "btn">').text(input).attr("data-game", input);
+  $("#buttons-view").append(btntxt);
+})
+})
 
   
