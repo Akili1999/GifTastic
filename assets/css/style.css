@@ -1,0 +1,18 @@
+body{
+    background-image: url("../images/background.png");
+    
+}
+button{
+    margin-bottom: 2%;
+    margin-left: 0.5%
+}
+h1{
+    text-align: center
+}
+#gifs-appear-here{
+    width: 20%;
+    height: 20%;
+}
+#game-input{
+    margin-left: 2%
+}

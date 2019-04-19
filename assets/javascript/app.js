@@ -13,9 +13,9 @@ $(document).on("click", ".btn", function() {
   })
     // After the data comes back from the API
     .then(function(response) {
+      
       // Storing an array of results in the results variable
       var results = response.data;
-
       // Looping over every result item
       for (var i = 0; i < results.length; i++) {
 
@@ -43,16 +43,15 @@ $(document).on("click", ".btn", function() {
 
           // Prepending the gifDiv to the "#gifs-appear-here" div in the HTML
           $("#gifs-appear-here").prepend(gifDiv);
-        
         }
       }
     });
 });
-
-$("#add-game").on("click", function(){
-  var input = $("#game-input").val().trim();
-  var btntxt = $('<button class= "btn">').text(input).attr("data-game", input);
-  $("#buttons-view").append(btntxt);
+$("#add-game").on("click", function click(){
+    var input = $("#game-input").val().trim();
+      var btntxt = $('<button class="btn btn-success" class= "btn">').text(input).attr("data-game", input);
+        $("#buttons-view").append(btntxt);
+          $("#game-input").val("");
 })
 })
 
