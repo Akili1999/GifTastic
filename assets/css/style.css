@@ -1,5 +1,5 @@
 body{
-    background-image: url("../images/background.png");
+    background-image: url("../images/concrete_seamless.png");
     
 }
 button{
@@ -9,10 +9,21 @@ button{
 h1{
     text-align: center
 }
-#gifs-appear-here{
-    width: 20%;
-    height: 20%;
-}
 #game-input{
-    margin-left: 2%
+    margin-left: 80%;
+}
+img{
+    margin-left: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    float: right;
+    width: 20%;
+    padding-left: 2%;
+}
+p{
+    text-align: right
+}
+#gifs-appear-here{
+    width: 77%;
+    align-content: right;
 }

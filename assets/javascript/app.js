@@ -40,9 +40,9 @@ $(document).on("click", ".btn", function() {
           
           gifDiv.append(p);
           gifDiv.append(gameImage);
-
           // Prepending the gifDiv to the "#gifs-appear-here" div in the HTML
           $("#gifs-appear-here").prepend(gifDiv);
+         
         }
       }
     });
