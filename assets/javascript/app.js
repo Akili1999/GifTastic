@@ -48,12 +48,17 @@ $(document).on("click", ".btn", function() {
     });
 });
 // This on click function adds a button to the button list //
+// if($("#game-input").val() != ""){
 $("#add-game").on("click", function click(){
-    var input = $("#game-input").val().trim();
+  if($("#game-input").val() != ""){  
+  var input = $("#game-input").val().trim();
       var btntxt = $('<button class="btn btn-success" class= "btn">').text(input).attr("data-game", input);
         $("#buttons-view").append(btntxt);
           $("#game-input").val("");       
-})
+          console.log($("#game-input"))
+        }
+        })
+      // }
 $("#gifs-appear-here").on("click", function play(){
   
 })
