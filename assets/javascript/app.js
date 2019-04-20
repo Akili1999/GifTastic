@@ -1,52 +1,53 @@
 $(document).ready(function(){
+  // The line below, allows everything that is classified as a button to access giphy //
 $(document).on("click", ".btn", function() {
-  // In this case, the "this" keyword refers to the button that was clicked
+  // This var stores the property of data-game //
   var game = $(this).attr("data-game");
-  // Constructing a URL to search Giphy for the name of the game who said the quote
+  // This is where we construct our link that will be put into giphy to get the results we need back from the API //
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
     game + "&api_key=dc6zaTOxFJmzC&limit=10";
 
-  // Performing our AJAX GET request
+  // This is our AJAX request to go retrieve the content using the method "GET" //
   $.ajax({
     url: queryURL,
     method: "GET"
   })
-    // After the data comes back from the API
+    // This function ONLY happens after we have retrieved the info from the API //
     .then(function(response) {
       
-      // Storing an array of results in the results variable
+      // Results acts as an array that stores all the gifs that we get from giphy API, for us to use later //
       var results = response.data;
-      // Looping over every result item
+      // This for loop, loops through our array, and allows us to control what gets shown //
       for (var i = 0; i < results.length; i++) {
 
-        // Only taking action if the photo has an appropriate rating
+        // This if statement allows us to filter out anything that has a rating of "R" or "PG-13" //
         if (results[i].rating !== "r" && results[i].rating !== "pg-13") {
-          // Creating a div for the gif
+          // This is the div for the individual GIFS //
           var gifDiv = $("<div>");
 
-          // Storing the result item's rating
+          // If the gif passes our filter, then it goes into the array for ratings //
           var rating = results[i].rating;
 
-          // Creating a paragraph tag with the result item's rating
+          // This creates a p tag for the ratings, so that they can now appear on the page //
           var p = $("<p>").text("Rating: " + rating);
 
-          // Creating an image tag
+          // This creates the image tag for the GIF, and will have any pre alteration we need //
           var gameImage = $("<img>");
 
-          // Giving the image tag an src attribute of a proprty pulled off the
-          // result item
+          // gameImage will also have the src tag associated with the picture, along with the link to it //
           gameImage.attr("src", results[i].images.fixed_height.url);
 
           
           gifDiv.append(p);
           gifDiv.append(gameImage);
-          // Prepending the gifDiv to the "#gifs-appear-here" div in the HTML
+          // This allows us to put the gifs from gif div, on to the page //
           $("#gifs-appear-here").prepend(gifDiv);
          
         }
       }
     });
 });
+// This on click function adds a button to the button list //
 $("#add-game").on("click", function click(){
     var input = $("#game-input").val().trim();
       var btntxt = $('<button class="btn btn-success" class= "btn">').text(input).attr("data-game", input);
