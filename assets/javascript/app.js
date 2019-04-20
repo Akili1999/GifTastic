@@ -52,9 +52,11 @@ $("#add-game").on("click", function click(){
     var input = $("#game-input").val().trim();
       var btntxt = $('<button class="btn btn-success" class= "btn">').text(input).attr("data-game", input);
         $("#buttons-view").append(btntxt);
-          $("#game-input").val("");
+          $("#game-input").val("");       
 })
-
+$("#gifs-appear-here").on("click", function play(){
+  
+})
 })
 
   
