@@ -35,7 +35,7 @@ $(document).on("click", ".btn", function() {
           var gameImage = $("<img>");
 
           // gameImage will also have the src tag associated with the picture, along with the link to it //
-          gameImage.attr("src", results[i].images.fixed_height.url);
+          gameImage.attr("src", results[i].images.fixed_height_still.url);
 
           
           gifDiv.append(p);
@@ -54,6 +54,7 @@ $("#add-game").on("click", function click(){
         $("#buttons-view").append(btntxt);
           $("#game-input").val("");
 })
+
 })
 
   
