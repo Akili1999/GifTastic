@@ -34,14 +34,23 @@ $(document).on("click", ".btn", function() {
           // This creates the image tag for the GIF, and will have any pre alteration we need //
           var gameImage = $("<img>");
 
-          // gameImage will also have the src tag associated with the picture, along with the link to it //
-          gameImage.attr("src", results[i].images.fixed_height.url);
+          // This has the state of the images when they are in their default animated state
+          var animated = results[i].images.fixed_height.url;
 
+          // This has the state of the images when they are paused
+          var still = results[i].images.fixed_height_still.url;
+
+          // gameImage will also have the src tag associated with the picture, along with the link to it //
+          gameImage.attr("src", still);
+          gameImage.attr("data-still", still);
+          gameImage.attr("data-animate", animated);
+          gameImage.attr("data-state", "still");
+          gameImage.addClass("game-image");
           
           gifDiv.append(p);
           gifDiv.append(gameImage);
           // This allows us to put the gifs from gif div, on to the page //
-          $("#gifs-appear-here").prepend(gifDiv);
+          $("#gifs-appear-here").append(gifDiv);
          
         }
       }
@@ -57,7 +66,18 @@ $("#add-game").on("click", function click(){
           $("#game-input").val("");       
           console.log($("#game-input"))
         }
-        })
-})
+        });
+});
 
+$(document).on("click", ".game-image", function(){
+
+  var state = $(this).attr("data-state");;
   
+  if (state === "still") {
+    $(this).attr("src", $(this).attr("data-animate"));
+    $(this).attr("data-state", "animate");
+  } else {
+    $(this).attr("src", $(this).attr("data-still"));
+    $(this).attr("data-state", "still");
+  }
+});
